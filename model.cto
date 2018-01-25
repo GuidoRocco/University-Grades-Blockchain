@@ -1,0 +1,37 @@
+/**
+ * New model file
+ */
+
+namespace org.acme.model 
+
+asset Grade identified by grade_id 
+{
+  o String grade_id 
+  o String exam
+  o String university
+  o String grade_num 
+  --> Student student 
+} 
+participant Professor identified by professor_id 
+{ 
+  o String professor_id 
+  o String first_name 
+  o String last_name 
+  o String university
+} 
+participant Student identified by student_id 
+{
+  o String student_id 
+  o String first_name 
+  o String last_name
+  o String university 
+  o String last_grade
+  o String[] grades 
+} 
+transaction mark_grade 
+{ 
+  o String student_id 
+  o String grade_new
+  --> Grade grade
+  --> Student student
+} 
